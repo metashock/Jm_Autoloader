@@ -2,7 +2,9 @@
 <phpunit backupGlobals="false"
    backupStaticAttributes="false"
    syntaxCheck="false">
-
+<php>
+  <includePath>lib/php</includePath>
+</php>
 <testsuites>
    <testsuite name="jam">
      <directory suffix="Test.php">tests</directory>
