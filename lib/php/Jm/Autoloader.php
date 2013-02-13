@@ -63,7 +63,7 @@ class Jm_Autoloader
      *
      * @return Jm_Autoloader
      */
-    protected function __construct(){
+    protected function __construct() {
         $includePath = get_include_path();
         $this->paths = explode(PATH_SEPARATOR, $includePath);
     }
@@ -122,7 +122,7 @@ class Jm_Autoloader
         if ($prepend === true) {
             return $this->prependPath($path, $namespace);
         } else {
-            if(!empty($namespace)) {
+            if (!empty($namespace)) {
                 $path = array (
                     $path, str_replace('_', '/', $namespace)
                 );
@@ -145,7 +145,7 @@ class Jm_Autoloader
      * @return Jm_Autoloader
      */
     public function prependPath($path, $namespace = '') {
-        if(!empty($namespace)) {
+        if (!empty($namespace)) {
             $path = array (
                 $path, str_replace('_', '/', $namespace)
             );
@@ -179,7 +179,7 @@ class Jm_Autoloader
      */
     public function __clone() {
         throw new Exception(sprintf(
-            '%s is a singleton. Cannot make a clone of it',
+            '%s is a singleton. Cannot clone it',
             __CLASS__
         ));
     }
