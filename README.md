@@ -1,11 +1,6 @@
 # J@m; Autoloader
 
-Seit PHP5.? die Möglichkeit einführte, Klassen dynamisch zur Laufzeit zu laden, ist dies eine vielgenutzte Funktionalität und Kernbestandteil vieler PHP Frameworks. Auch Jam benutzt Autoloading um Klassen zur Laufzeit zu laden. Daher ist Jm_Autoload auch Kernbestandteil von Jm. Er kann natürlich auch unabhängig von Jam benutzt werden.
-
-Das von den PHP Entwicklern Autoloading genannte feature bietet die folgenden Vorteile:
-
-- zahllose teils komplizierte require_once statements entfallen
-- Wenn sich der Programmierer ein einheitliches Schema bei der Benahmung von Klassendateien hält, kann er komplett auf `include` oder `require` Anweisungen zum Laden von Klassen verzichten.
+Since PHP 5.1.2 introduced the possibility to load class files dynamically at runtime, it is a wide used functionality and core of most PHP Frameworks. Jm uses `autoloading` too.  Therefore all other Jm packages will depend on `Jm_Autoloader`.
 
 
 ## Installation
