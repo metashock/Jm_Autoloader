@@ -18,12 +18,6 @@ require_once 'Jm/Autoloader.php';
 
 $d = new Dummy();
 $d->hello();
-
-/*Jm_Autoloader::setClasspath();
-Jm_Autoloader::addClasspath();
-Jm_Autoloader::removeClasspath();
-Jm_Autoloader::getClasspath();*/
-
 unlink('Dummy.php');
 
 
