@@ -196,7 +196,7 @@ class AutoloaderTest extends PHPUnit_Framework_TestCase
      * an exception
      *
      * @expectedException         Exception
-     * @expectedExceptionMessage  Jm_Autoloader is a singleton. Cannot make a clone of it 
+     * @expectedExceptionMessage  Jm_Autoloader is a singleton. Cannot clone it 
      */
     public function testClone() {
         require_once 'Jm/Autoloader.php';
