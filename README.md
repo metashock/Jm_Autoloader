@@ -31,6 +31,11 @@ Alternatively, you can just download the package from http://www.metashock.de/pe
 
 ## Documentation
 
+### API documentation
+
+The API docs can be found here:
+
+    http://metashock.de/docs/api/Jm/Autoloader/index.html
 
 ### How to name classes?
 
@@ -43,5 +48,6 @@ For example the Autolader expects the following class in a file name `View/Html/
        // ...
 ```
 
-If you use the default configuration, Jm_Autoloader will search in paths listed in `ini_get('include_path');`.
+If you use the default configuration, Jm_Autoloader will search in paths listed in `ini_get('include_path');`. You can add paths using the methods `addPath` and `prependPath`.
+
 
