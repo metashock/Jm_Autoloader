@@ -1,0 +1,8 @@
+{
+    "name"          : "metashock/jm_autoloader",
+    "version"       : "0.2.2",
+    "license"       : "BSD-3",
+    "description"   : "Implementation of the SPL autoload mechanism",
+    "minimum-stability" : "beta"
+}
+
