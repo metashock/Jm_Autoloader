@@ -1,9 +1,14 @@
-# build artifacts
-build/api
-build/code-browser
-build/coverage
-build/logs
-build/pdepend
-build/phpdox
+nbproject
 cache.properties
+build/coverage
+build/api
+build/logs
+build/phpdoc
+build/phpdox
+build/code-browser
+build/pdepend
+build/*.tgz
+build/pear
+build/tmp
+.vagrant
 
