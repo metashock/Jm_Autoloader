@@ -155,7 +155,7 @@ class Jm_Autoloader
                 $path, str_replace('_', '/', $namespace)
             );
         }
-        $this->paths = array($path) + $this->paths;
+        array_unshift($this->paths, $path);
         return $this;
     }
 
