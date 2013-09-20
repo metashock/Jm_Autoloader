@@ -19,7 +19,7 @@
 /*
  * Register the autoload method on file load
  */
-spl_autoload_register(array(Jm_Autoloader::singleton(), 'autoload'), true);
+spl_autoload_register(array(Jm_Autoloader::singleton(), 'autoload'), TRUE);
 /**
  * Singleton class that allows to configure autoloading and provides the
  * autoload method itself. This may change to a Jm_Autoloader_Resolver in
@@ -82,10 +82,15 @@ class Jm_Autoloader
     public function autoload ($classname) {
         // if the class where already loaded. should not happen
         if (class_exists($classname)) {
-            return true;
+            return TRUE;
         }
 
-        $path = str_replace('_', '/', $classname) . '.php';
+        // Works for PEAR style class names and namespaced class names
+        $path = str_replace(
+            array('_', '\\'),
+            '/',
+            $classname
+        ) . '.php';
         
         foreach ($this->paths as $basePath) {
             $tail = $path;
@@ -96,12 +101,12 @@ class Jm_Autoloader
             }
             if (file_exists($basePath . '/' . $tail)) {
                 include_once $basePath . '/' . $tail;
-                return true;
+                return TRUE;
             }
         }
         // @codeCoverageIgnoreStart
         // returning false makes PHP throwing a fatal error
-        return false;
+        return FALSE;
         // @codeCoverageIgnoreEnd
     }
 
@@ -118,8 +123,8 @@ class Jm_Autoloader
      *
      * @return Jm_Autoloader
      */
-    public function addPath($path, $namespace = '', $prepend = false) {
-        if ($prepend === true) {
+    public function addPath($path, $namespace = '', $prepend = FALSE) {
+        if ($prepend === TRUE) {
             return $this->prependPath($path, $namespace);
         } else {
             if (!empty($namespace)) {

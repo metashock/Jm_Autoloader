@@ -54,8 +54,46 @@ class AutoloaderTest extends PHPUnit_Framework_TestCase
 
 
     /**
-     *  Tests if it works to append or prepend a
-     *  path to the search paths array
+     * Tests whether classes with php 5.3 and above style
+     * namespaced classnames can be loaded. For example:
+     *
+     * \Hello\World\Class -> PATH/Hello/World/Class.php
+     */
+    public function testAutoloadNamespaced() {
+        $tmpdir = $this->tempdir(sys_get_temp_dir(), 'Test');
+        $tmpfile = tempnam($tmpdir, 'Class');
+
+        $classname = basename($tmpfile);
+        $packagename = basename($tmpdir);
+
+        // rename it to PHP so that the Autoloader can find it
+        rename($tmpfile, $tmpfile . '.php');
+
+        // register a shutdown function to make *sure* that
+        // the tmpfile will be remove although autoloading fails
+        register_shutdown_function(function() use ($tmpdir, $tmpfile){
+            if(file_exists($tmpfile . '.php')) {
+                unlink($tmpfile . '.php');
+            }
+
+            if(file_exists($tmpdir) && is_dir($tmpdir)) {
+                rmdir($tmpdir);
+            }
+        });
+
+        file_put_contents($tmpfile . '.php',
+            "<?php namespace $packagename; class $classname {}");
+
+        require_once 'Jm/Autoloader.php';
+        $ret = Jm_Autoloader::singleton()->addPath($tmpdir);
+        $classname = '\\' . $packagename . '\\' . $classname;
+        new $classname();
+    }
+
+
+    /**
+     * Tests if it works to append or prepend a
+     * path to the search paths array
      */
     public function testAddPath() {
         $tmpdir = sys_get_temp_dir();
